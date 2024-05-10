@@ -1,6 +1,15 @@
 const express = require('express');
 const router = express.Router();
 const Reclamation = require('../models/reclamationModel');
+//get reclamation
+router.get('/', async (req, res) => {
+  try {
+    const reclamations = await Reclamation.find();
+    res.json(reclamations);
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
 // Add a new reclamation
 router.post('/', async (req, res) => {

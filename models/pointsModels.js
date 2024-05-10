@@ -1,12 +1,10 @@
-const mongoose = require('mongoose')
-const Points  = new mongoose.Schema({
+const mongoose = require('mongoose');
 
-pointsEpargne: { type: Number },
-    
+const PointsSchema = new mongoose.Schema({
+  matricule: { type: Number, required: true },
+  points: { type: Number, default: 0 },
+}, {
+  timestamps: true
+});
 
-},{
-    timestamps: true,
-    collection:'points_data'
-})
-const model =mongoose.model("points_data",Points)
-module.exports=model;
+module.exports = mongoose.model('Points', PointsSchema); 
